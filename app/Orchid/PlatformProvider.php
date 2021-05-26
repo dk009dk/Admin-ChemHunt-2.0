@@ -43,28 +43,17 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('user')
                 ->route('platform.chemhunt.users')
                 ->permission('platform.chemhunt.users.show')
-                ->title(__('ChemHunt Access')),
+                ->title(__('ChemHunt Users')),
 
             Menu::make(__('Tasks'))
-                ->icon('chemistry')
+                ->icon('key')
                 ->route('platform.chemhunt.tasks.list')
-                ->permission('platform.chemhunt.tasks.show'),
-
-            Menu::make('Task')
-                ->icon('chemistry')
-                ->title(__('ChemHunt'))
-                ->list([
-                    Menu::make('Day 1')->icon('bag'),
-                    Menu::make('Day 2')->icon('bag'),
-                    Menu::make('Day 3')->icon('bag'),
-                    Menu::make('Day 4')->icon('bag'),
-                    Menu::make('Day 5')->icon('bag'),
-                    Menu::make('Day 6')->icon('bag'),
-                    Menu::make('Day 7')->icon('bag'),
-                ]),
+                ->permission('platform.chemhunt.tasks.show')
+                ->title(__('ChemHunt Tasks')),
 
             Menu::make('Results')
                 ->icon('anchor')
+                ->title(__('ChemHunt'))
                 ->list([
                     Menu::make('Day 1')->icon('key'),
                     Menu::make('Day 2')->icon('key'),
