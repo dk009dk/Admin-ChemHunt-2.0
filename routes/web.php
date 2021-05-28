@@ -1,6 +1,10 @@
 <?php
 
+use App\Exports\Chemhunt\UsersExport;
+use App\Models\User;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Facades\Excel;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect('/home','/main');
 Route::get('/test',function (){
-    \App\Models\User::query()->find('');
+    $users=User::with('riddlesToday')->get(['id','user_email','email'])->keyBy('id')->map(function ($user){
+
+    });
+    dd($users);
 });

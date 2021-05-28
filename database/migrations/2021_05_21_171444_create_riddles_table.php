@@ -17,7 +17,8 @@ class CreateRiddlesTable extends Migration
             $table->uuid('id')->primary();
             $table->longText('question');
             $table->text('answer');
-            $table->enum('day',['1','2','3','4','5','6','7']);
+            $table->tinyInteger('sr_no');
+            $table->tinyInteger('day');
             $table->timestamps();
         });
     }

@@ -5,8 +5,8 @@ namespace App\Orchid\Screens\Chemhunt\Task;
 use App\Exports\Chemhunt\TasksExport;
 use App\Models\Task;
 use App\Models\User;
-use App\Orchid\Layouts\Chemhunt\Task\TaskEditLayout;
-use App\Orchid\Layouts\Chemhunt\Task\TaskListLayout;
+use App\Orchid\Layouts\Chemhunt\Task\TaskTodayEditLayout;
+use App\Orchid\Layouts\Chemhunt\Task\TaskTodayListLayout;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
@@ -15,7 +15,7 @@ use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
 
-class TasksListSceen extends Screen
+class TasksTodayListSceen extends Screen
 {
     /**
      * Display header name.
@@ -34,7 +34,7 @@ class TasksListSceen extends Screen
     /**
      * @var string
      */
-    public $permission = 'platform.chemhunt.tasks.show';
+    public $permission = 'platform.chemhunt.tasks.today.show';
 
     /**
      * Query data.
@@ -57,13 +57,7 @@ class TasksListSceen extends Screen
      */
     public function commandBar(): array
     {
-        return [
-            Button::make('Export file')
-                ->method('export')
-                ->icon('cloud-download')
-                ->rawClick()
-                ->novalidate(),
-        ];
+        return [];
     }
 
     /**
@@ -74,8 +68,8 @@ class TasksListSceen extends Screen
     public function layout(): array
     {
         return [
-            TaskListLayout::class,
-            Layout::modal('oneAsyncModal', TaskEditLayout::class)
+            TaskTodayListLayout::class,
+            Layout::modal('oneAsyncModal', TaskTodayEditLayout::class)
                 ->async('asyncGetTask'),
         ];
     }
@@ -102,10 +96,5 @@ class TasksListSceen extends Screen
         $task->fill(['day_'.config('chemhunt.day')=>$data])->save();
         //$user->save($task);
         Toast::info(__('Task status Updated.'));
-    }
-    public function export(){
-        ob_end_clean();
-        ob_start();
-        return Excel::download(new TasksExport, 'chemhunt-tasks-'.Carbon::now().'.xlsx');
     }
 }

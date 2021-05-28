@@ -49,13 +49,6 @@ class User extends Model
     public $incrementing = false;
 
     /**
-     * Indicates if the model exists.
-     *
-     * @var bool
-     */
-    public $exists = true;
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -188,6 +181,14 @@ class User extends Model
     public function getKeyType()
     {
         return 'string';
+    }
+
+    public function answer(){
+        return $this->hasOne(Answer::class,'user_id');
+    }
+
+    public function result(){
+        return $this->hasOne(Result::class,'user_id');
     }
 
     public function task()

@@ -89,7 +89,9 @@ class UserListScreen extends Screen
     }
 
     public function export(){
-        return Excel::download(new UsersExport(), 'users-'.Carbon::now().'.xlsx');
+        ob_end_clean();
+        ob_start();
+        return Excel::download(new UsersExport(), 'chemhunt-users-'.Carbon::now().'.xlsx');
     }
 
     public function saveUser(User $user, Request $request): void

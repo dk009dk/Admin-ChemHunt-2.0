@@ -14,16 +14,41 @@ class CreateAnswersTable extends Migration
     public function up()
     {
         Schema::create('answers', function (Blueprint $table) {
+            $table->uuid('id')->primary();
             $table->uuid('user_id');
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->uuid('riddle_id');
-            $table->primary(['user_id','riddle_id']);
-            $table->text('user_answer');
-            $table->boolean('result')->default(0);
+            $table->text('day_1_q_1')->nullable();
+            $table->text('day_1_q_2')->nullable();
+            $table->text('day_1_q_3')->nullable();
+            $table->text('day_1_q_4')->nullable();
+            $table->text('day_2_q_1')->nullable();
+            $table->text('day_2_q_2')->nullable();
+            $table->text('day_2_q_3')->nullable();
+            $table->text('day_2_q_4')->nullable();
+            $table->text('day_3_q_1')->nullable();
+            $table->text('day_3_q_2')->nullable();
+            $table->text('day_3_q_3')->nullable();
+            $table->text('day_3_q_4')->nullable();
+            $table->text('day_4_q_1')->nullable();
+            $table->text('day_4_q_2')->nullable();
+            $table->text('day_4_q_3')->nullable();
+            $table->text('day_4_q_4')->nullable();
+            $table->text('day_5_q_1')->nullable();
+            $table->text('day_5_q_2')->nullable();
+            $table->text('day_5_q_3')->nullable();
+            $table->text('day_5_q_4')->nullable();
+            $table->text('day_6_q_1')->nullable();
+            $table->text('day_6_q_2')->nullable();
+            $table->text('day_6_q_3')->nullable();
+            $table->text('day_6_q_4')->nullable();
+            $table->text('day_7_q_1')->nullable();
+            $table->text('day_7_q_2')->nullable();
+            $table->text('day_7_q_3')->nullable();
+            $table->text('day_7_q_4')->nullable();
             $table->timestamps();
         });
     }

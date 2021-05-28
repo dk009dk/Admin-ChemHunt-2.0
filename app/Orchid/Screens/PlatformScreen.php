@@ -15,14 +15,14 @@ class PlatformScreen extends Screen
      *
      * @var string
      */
-    public $name = 'Get Started';
+    public $name = 'ChemHunt 2.0';
 
     /**
      * Display header description.
      *
      * @var string
      */
-    public $description = 'Welcome to your Orchid application.';
+    public $description = 'Welcome to ChemHunt 2.0 admin section.';
 
     /**
      * Query data.
@@ -43,16 +43,9 @@ class PlatformScreen extends Screen
     {
         return [
             Link::make('Website')
-                ->href('http://orchid.software')
+                ->href('http://chemhunt.herokuapp.com')
                 ->icon('globe-alt'),
 
-            Link::make('Documentation')
-                ->href('https://orchid.software/en/docs')
-                ->icon('docs'),
-
-            Link::make('GitHub')
-                ->href('https://github.com/orchidsoftware/platform')
-                ->icon('social-github'),
         ];
     }
 

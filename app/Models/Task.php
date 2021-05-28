@@ -48,12 +48,6 @@ class Task extends Model
      */
     public $incrementing = false;
 
-    /**
-     * Indicates if the model exists.
-     *
-     * @var bool
-     */
-    public $exists = true;
 
     /**
      * The attributes that are mass assignable.

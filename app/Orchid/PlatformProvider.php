@@ -2,6 +2,7 @@
 
 namespace App\Orchid;
 
+use App\Models\User;
 use Orchid\Platform\Dashboard;
 use Orchid\Platform\ItemPermission;
 use Orchid\Platform\OrchidServiceProvider;
@@ -43,26 +44,39 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('user')
                 ->route('platform.chemhunt.users')
                 ->permission('platform.chemhunt.users.show')
-                ->title(__('ChemHunt Users')),
+                ->title(__('ChemHunt Access')),
+
+            Menu::make(__('Riddles'))
+                ->icon('layers')
+                ->route('platform.chemhunt.riddles')
+                ->permission('platform.chemhunt.riddles.show'),
 
             Menu::make(__('Tasks'))
                 ->icon('key')
-                ->route('platform.chemhunt.tasks.list')
-                ->permission('platform.chemhunt.tasks.show')
-                ->title(__('ChemHunt Tasks')),
+                ->route('platform.chemhunt.tasks')
+                ->permission('platform.chemhunt.tasks.show'),
 
-            Menu::make('Results')
+            Menu::make(__('Results'))
                 ->icon('anchor')
-                ->title(__('ChemHunt'))
-                ->list([
-                    Menu::make('Day 1')->icon('key'),
-                    Menu::make('Day 2')->icon('key'),
-                    Menu::make('Day 3')->icon('key'),
-                    Menu::make('Day 4')->icon('key'),
-                    Menu::make('Day 5')->icon('key'),
-                    Menu::make('Day 6')->icon('key'),
-                    Menu::make('Day 7')->icon('key'),
-                ]),
+                ->route('platform.chemhunt.results')
+                ->permission('platform.chemhunt.results.show'),
+
+            Menu::make(__('Answers'))
+                ->icon('bag')
+                ->route('platform.chemhunt.answers')
+                ->permission('platform.chemhunt.answers.show'),
+
+            Menu::make(__('Today Tasks'))
+                ->icon('key')
+                ->route('platform.chemhunt.tasks.today')
+                ->permission('platform.chemhunt.tasks.today.show')
+                ->title(__('ChemHunt Today Task')),
+
+            Menu::make(__('Today Answers'))
+                ->icon('bag')
+                ->route('platform.chemhunt.answers.today')
+                ->permission('platform.chemhunt.answers.today.show')
+                ->title(__('ChemHunt Today Answers')),
 
             //Example Screen
             Menu::make('Example screen')
@@ -150,7 +164,11 @@ class PlatformProvider extends OrchidServiceProvider
                 ->addPermission('platform.chemhunt.riddles.access', __('Riddles Access'))
                 ->addPermission('platform.chemhunt.riddles.show', __('Riddles Show'))
                 ->addPermission('platform.chemhunt.riddles.edit', __('Riddles Edit'))
-                ->addPermission('platform.chemhunt.tasks.show', __('Tasks Show')),
+                ->addPermission('platform.chemhunt.tasks.show', __('Tasks Show'))
+                ->addPermission('platform.chemhunt.tasks.today.show', __('Tasks Today'))
+                ->addPermission('platform.chemhunt.results.show', __('Results'))
+                ->addPermission('platform.chemhunt.answers.show', __('Answers'))
+                ->addPermission('platform.chemhunt.answers.today.show', __('Answers Today')),
             ];
     }
 
@@ -161,7 +179,7 @@ class PlatformProvider extends OrchidServiceProvider
     {
         return [
             // ...Models
-            \App\Models\User::class
+            User::class
         ];
     }
 }

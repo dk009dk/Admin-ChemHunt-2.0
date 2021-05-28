@@ -7,7 +7,7 @@ use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Layouts\Rows;
 
-class TaskEditLayout extends Rows
+class TaskTodayEditLayout extends Rows
 {
     /**
      * Views.

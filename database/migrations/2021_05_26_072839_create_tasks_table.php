@@ -24,12 +24,19 @@ class CreateTasksTable extends Migration
                 ->onDelete('cascade');
 
             $table->enum('day_1',['Done','Pending'])->default('Pending');
+            $table->enum('hunt_day_1',['Done','Pending'])->default('Pending');
             $table->enum('day_2',['Done','Pending'])->default('Pending');
+            $table->enum('hunt_day_2',['Done','Pending'])->default('Pending');
             $table->enum('day_3',['Done','Pending'])->default('Pending');
+            $table->enum('hunt_day_3',['Done','Pending'])->default('Pending');
             $table->enum('day_4',['Done','Pending'])->default('Pending');
+            $table->enum('hunt_day_4',['Done','Pending'])->default('Pending');
             $table->enum('day_5',['Done','Pending'])->default('Pending');
+            $table->enum('hunt_day_5',['Done','Pending'])->default('Pending');
             $table->enum('day_6',['Done','Pending'])->default('Pending');
+            $table->enum('hunt_day_6',['Done','Pending'])->default('Pending');
             $table->enum('day_7',['Done','Pending'])->default('Pending');
+            $table->enum('hunt_day_7',['Done','Pending'])->default('Pending');
             $table->timestamps();
         });
     }

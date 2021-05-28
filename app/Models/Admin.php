@@ -49,12 +49,6 @@ class Admin extends Authenticatable implements UserInterface
      */
     protected $table = 'admins';
 
-    /**
-     * Indicates if the model exists.
-     *
-     * @var bool
-     */
-    public $exists = true;
 
     /**
      * The attributes that are mass assignable.

@@ -4,11 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Orchid\Access\UserAccess;
+use Orchid\Filters\Filterable;
+use Orchid\Metrics\Chartable;
+use Orchid\Screen\AsSource;
 use Ramsey\Uuid\Uuid;
 
 class Riddle extends Model
 {
-    use HasFactory;
+    use Notifiable, UserAccess, AsSource, Filterable, Chartable, HasFactory;
 
     /**
      * The primary key for the model.
@@ -30,6 +35,54 @@ class Riddle extends Model
      * @var bool
      */
     public $incrementing = false;
+
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'riddles';
+
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'question',
+        'answer',
+        'sr_no',
+        'day',
+    ];
+
+    /**
+     * The attributes for which you can use filters in url.
+     *
+     * @var array
+     */
+    protected $allowedFilters = [
+        'id',
+        'question',
+        'answer',
+        'sr_no',
+        'day',
+    ];
+
+    /**
+     * The attributes for which can use sort in url.
+     *
+     * @var array
+     */
+    protected $allowedSorts = [
+        'id',
+        'question',
+        'answer',
+        'sr_no',
+        'day',
+        'updated_at',
+        'created_at',
+    ];
 
     /**
      * The "booting" method of the model.
@@ -57,6 +110,7 @@ class Riddle extends Model
     {
         return false;
     }
+
     /**
      * Get the auto-incrementing key type.
      *
