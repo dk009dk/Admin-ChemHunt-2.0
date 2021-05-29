@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Orchid\Screens;
 
+use App\Orchid\Layouts\Chemhunt\Chart\UserChart;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
@@ -57,7 +58,10 @@ class PlatformScreen extends Screen
     public function layout(): array
     {
         return [
-            Layout::view('platform::partials.welcome'),
+            Layout::columns([
+               UserChart::class,
+            ]),
+            //Layout::view('platform::partials.welcome'),
         ];
     }
 }
