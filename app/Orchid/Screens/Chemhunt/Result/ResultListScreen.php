@@ -16,7 +16,7 @@ class ResultListScreen extends Screen
      *
      * @var string
      */
-    public $name = 'Resuls';
+    public $name = 'Results';
 
     /**
      * Display header description.
@@ -39,7 +39,7 @@ class ResultListScreen extends Screen
     {
         return [
             'users'=>User::filters()
-                ->with('riddles')
+                ->with('result')
                 ->paginate(),
         ];
     }
