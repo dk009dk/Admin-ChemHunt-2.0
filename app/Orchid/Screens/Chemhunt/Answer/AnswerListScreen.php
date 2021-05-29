@@ -34,7 +34,9 @@ class AnswerListScreen extends Screen
     public function query(): array
     {
         return [
-            'users'=>User::with('answer')->select('id','first_name','last_name','user_email','email')
+            'users'=>User::filters()
+                ->with('answer')
+                ->select('id','first_name','last_name','user_email','email')
                 ->paginate(),
         ];
     }

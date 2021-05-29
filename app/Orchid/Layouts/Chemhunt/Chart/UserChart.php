@@ -11,7 +11,7 @@ class UserChart extends Chart
      *
      * @var string
      */
-    protected $title = 'Users';
+    protected $title = 'Super Chart';
 
     /**
      * Available options:
@@ -20,7 +20,7 @@ class UserChart extends Chart
      *
      * @var string
      */
-    protected $type = 'line';
+    protected $type = 'bar';
 
     /**
      * Data source.
@@ -30,7 +30,7 @@ class UserChart extends Chart
      *
      * @var string
      */
-    protected $target = 'users';
+    protected $target = 'charts';
 
     /**
      * Determines whether to display the export button.

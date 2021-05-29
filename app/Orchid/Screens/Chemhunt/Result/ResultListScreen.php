@@ -40,6 +40,7 @@ class ResultListScreen extends Screen
         return [
             'users'=>User::filters()
                 ->with('result')
+                ->select('id','first_name','last_name','user_email','email')
                 ->paginate(),
         ];
     }
@@ -52,11 +53,11 @@ class ResultListScreen extends Screen
     public function commandBar(): array
     {
         return [
-            Button::make('Export file')
+           /* Button::make('Export file')
                 ->method('export')
                 ->icon('cloud-download')
                 ->rawClick()
-                ->novalidate(),
+                ->novalidate(), */
         ];
     }
 
