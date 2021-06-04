@@ -6,6 +6,7 @@ use Orchid\Screen\Field;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Layouts\Rows;
+use Orchid\Screen\TD;
 
 class TaskTodayEditLayout extends Rows
 {
@@ -17,6 +18,11 @@ class TaskTodayEditLayout extends Rows
     public function fields(): array
     {
         return [
+
+            Input::make('task.user.user_email')
+                ->type('email')
+                ->title(__('Email')),
+
             Select::make('task.day_'.config('chemhunt.day'))
                 ->options([
                     'Done'   => 'Done',

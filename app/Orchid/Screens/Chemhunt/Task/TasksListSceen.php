@@ -44,8 +44,9 @@ class TasksListSceen extends Screen
     public function query(): array
     {
         return [
-            'tasks' => Task::filters()
-                ->with('user')
+            'users' => User::filters()
+                ->with('task')
+                ->select('id','first_name','last_name','user_email','email')
                 ->paginate(),
         ];
     }
@@ -81,26 +82,26 @@ class TasksListSceen extends Screen
     }
 
     /**
-     * @param Task $task
+     * @param User $user
      *
      * @return array
      */
-    public function asyncGetTask(Task $task): array
+    public function asyncGetTask(User $user): array
     {
         return [
-            'task' => $task,
+            'user' => $user,
         ];
     }
 
     /**
-     * @param Task $task
+     * @param User $user
      * @param Request $request
      */
-    public function saveTask(Task $task, Request $request): void
+    public function saveTask(User $user, Request $request): void
     {
+
         $data=$request->input('task.day_'.config('chemhunt.day'));
-        $task->fill(['day_'.config('chemhunt.day')=>$data])->save();
-        //$user->save($task);
+        $user->task()->update(['day_'.config('chemhunt.day')=>$data]);
         Toast::info(__('Task status Updated.'));
     }
     public function export(){

@@ -7,12 +7,7 @@ namespace App\Orchid\Screens\Chemhunt\Riddle;
 use App\Models\Riddle;
 use App\Orchid\Layouts\Chemhunt\Riddle\RiddleEditLayout;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rule;
 use Orchid\Screen\Actions\Button;
-use Orchid\Screen\Fields\Input;
-use Orchid\Screen\Fields\Quill;
-use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Toast;
 
@@ -109,7 +104,6 @@ class RiddleCreateScreen extends Screen
     {
         $request->validate([
             'riddle.question' => ['required'],
-            'riddle.answer' => ['required'],
             'riddle.day' => ['required'],
             'riddle.sr_no' => ['required'],
         ]);

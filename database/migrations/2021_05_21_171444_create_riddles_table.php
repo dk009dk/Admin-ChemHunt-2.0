@@ -16,7 +16,6 @@ class CreateRiddlesTable extends Migration
         Schema::create('riddles', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->longText('question');
-            $table->text('answer');
             $table->tinyInteger('sr_no');
             $table->tinyInteger('day');
             $table->timestamps();

@@ -37,7 +37,6 @@ class TasksExport implements FromCollection, WithMapping, WithHeadings
             $user->task->hunt_day_6,
             $user->task->day_7,
             $user->task->hunt_day_7,
-            Carbon::parse($user->created_at)->toDateTimeString(),
         ] ;
 
 
@@ -62,7 +61,6 @@ class TasksExport implements FromCollection, WithMapping, WithHeadings
             'Hunt 6',
             'Task 7',
             'Hunt 7',
-            'Created At'
         ] ;
     }
 }

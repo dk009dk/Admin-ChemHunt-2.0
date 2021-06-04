@@ -56,27 +56,22 @@ class PlatformProvider extends OrchidServiceProvider
                 ->route('platform.chemhunt.tasks')
                 ->permission('platform.chemhunt.tasks.show'),
 
-            Menu::make(__('Results'))
-                ->icon('anchor')
-                ->route('platform.chemhunt.results')
-                ->permission('platform.chemhunt.results.show'),
-
             Menu::make(__('Answers'))
                 ->icon('bag')
                 ->route('platform.chemhunt.answers')
                 ->permission('platform.chemhunt.answers.show'),
 
-            Menu::make(__('Today Tasks'))
+            Menu::make(__('Today Answers'))
+                ->icon('bag')
+                ->route('platform.chemhunt.answers.today')
+                ->permission('platform.chemhunt.answers.today.show'),
+
+            Menu::make(__('Today Task'))
                 ->icon('key')
                 ->route('platform.chemhunt.tasks.today')
                 ->permission('platform.chemhunt.tasks.today.show')
                 ->title(__('ChemHunt Today Task')),
 
-            Menu::make(__('Today Answers'))
-                ->icon('bag')
-                ->route('platform.chemhunt.answers.today')
-                ->permission('platform.chemhunt.answers.today.show')
-                ->title(__('ChemHunt Today Answers')),
         ];
     }
 
@@ -104,12 +99,10 @@ class PlatformProvider extends OrchidServiceProvider
                 ->addPermission('platform.chemhunt.users.access', __('Users Access'))
                 ->addPermission('platform.chemhunt.users.show', __('Users Show'))
                 ->addPermission('platform.chemhunt.users.edit', __('Users Edit'))
-                ->addPermission('platform.chemhunt.riddles.access', __('Riddles Access'))
                 ->addPermission('platform.chemhunt.riddles.show', __('Riddles Show'))
                 ->addPermission('platform.chemhunt.riddles.edit', __('Riddles Edit'))
                 ->addPermission('platform.chemhunt.tasks.show', __('Tasks Show'))
                 ->addPermission('platform.chemhunt.tasks.today.show', __('Tasks Today'))
-                ->addPermission('platform.chemhunt.results.show', __('Results'))
                 ->addPermission('platform.chemhunt.answers.show', __('Answers'))
                 ->addPermission('platform.chemhunt.answers.today.show', __('Answers Today')),
             ];

@@ -47,7 +47,7 @@ class UsersExport implements FromCollection,WithMapping,WithHeadings
             $user->user_email,
             $user->user_password,
             $user->email,
-            Carbon::parse($user->created_at)->toDateTimeString(),
+            Carbon::parse($user->updated_at)->toDateTimeString(),
         ] ;
 
 

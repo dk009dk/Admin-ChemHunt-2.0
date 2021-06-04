@@ -2,15 +2,10 @@
 
 namespace App\Orchid\Screens\Chemhunt\Task;
 
-use App\Exports\Chemhunt\TasksExport;
 use App\Models\Task;
-use App\Models\User;
 use App\Orchid\Layouts\Chemhunt\Task\TaskTodayEditLayout;
 use App\Orchid\Layouts\Chemhunt\Task\TaskTodayListLayout;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
-use Maatwebsite\Excel\Facades\Excel;
-use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
@@ -43,6 +38,7 @@ class TasksTodayListSceen extends Screen
      */
     public function query(): array
     {
+        $this->description = 'Task Day '.config('chemhunt.day').' Status';
         return [
             'tasks' => Task::filters()
                 ->with('user')

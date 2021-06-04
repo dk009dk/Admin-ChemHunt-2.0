@@ -43,11 +43,6 @@ class RiddleListLayout extends Table
                     return \Illuminate\Support\Str::limit($riddle->question,'50');
                 }),
 
-            TD::make('answer', __('Answer'))
-                ->sort()
-                ->cantHide()
-                ->filter(TD::FILTER_TEXT),
-
             TD::make('day', __('Day'))
                 ->sort()
                 ->cantHide()

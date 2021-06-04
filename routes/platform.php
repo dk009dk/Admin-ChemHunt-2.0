@@ -129,15 +129,6 @@ Route::screen('tasks',\App\Orchid\Screens\Chemhunt\Task\TasksListSceen::class )
             ->push(__('Tasks'), route('platform.chemhunt.tasks'));
     });
 
-//Chemhunt > Users > Results
-Route::screen('results',\App\Orchid\Screens\Chemhunt\Result\ResultListScreen::class )
-    ->name('platform.chemhunt.results')
-    ->breadcrumbs(function (Trail $trail) {
-        return $trail
-            ->parent('platform.index')
-            ->push(__('Results'), route('platform.chemhunt.results'));
-    });
-
 //Chemhunt > Users > Answers
 Route::screen('answers/today',\App\Orchid\Screens\Chemhunt\Answer\AnswerTodayListScreen::class )
     ->name('platform.chemhunt.answers.today')

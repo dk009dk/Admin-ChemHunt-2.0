@@ -51,7 +51,6 @@ class Riddle extends Model
      */
     protected $fillable = [
         'question',
-        'answer',
         'sr_no',
         'day',
     ];
@@ -64,7 +63,6 @@ class Riddle extends Model
     protected $allowedFilters = [
         'id',
         'question',
-        'answer',
         'sr_no',
         'day',
     ];
@@ -77,7 +75,6 @@ class Riddle extends Model
     protected $allowedSorts = [
         'id',
         'question',
-        'answer',
         'sr_no',
         'day',
         'updated_at',

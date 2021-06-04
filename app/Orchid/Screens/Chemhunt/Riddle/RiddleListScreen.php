@@ -68,20 +68,6 @@ class RiddleListScreen extends Screen
     {
         return [
             RiddleListLayout::class,
-            Layout::modal('oneAsyncModal', RiddleEditLayout::class)
-                ->async('asyncGetRiddle'),
-        ];
-    }
-
-    /**
-     * @param Riddle $riddle
-     *
-     * @return array
-     */
-    public function asyncGetRiddle(Riddle $riddle): array
-    {
-        return [
-            'riddle' => $riddle,
         ];
     }
 

@@ -4,11 +4,8 @@ declare(strict_types=1);
 
 namespace App\Orchid\Screens;
 
-use App\Models\User;
-use App\Orchid\Layouts\Chemhunt\Chart\UserChart;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
-use Orchid\Support\Facades\Layout;
 
 class PlatformScreen extends Screen
 {
@@ -34,7 +31,6 @@ class PlatformScreen extends Screen
     public function query(): array
     {
         return [
-            'users'=>User::countByDays()->toChart('Users'),
         ];
     }
 
@@ -62,8 +58,6 @@ class PlatformScreen extends Screen
     {
         return [
 
-               UserChart::class,
-            //Layout::view('platform::partials.welcome'),
         ];
     }
 }

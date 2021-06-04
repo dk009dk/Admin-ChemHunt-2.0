@@ -3,7 +3,6 @@
 namespace App\Orchid\Layouts\Chemhunt\Answer;
 
 use App\Models\User;
-use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
 
@@ -56,6 +55,10 @@ class AnswerTodayListLayout extends Table
             TD::make('answer.day_'.config('chemhunt.day').'_q_4', __('Final'))
                 ->cantHide()
                 ->filter(TD::FILTER_TEXT),
+
+            TD::make('answer.day_'.config('chemhunt.day').'_time', __('Time'))
+                ->cantHide()
+                ->filter(TD::FILTER_DATE),
         ];
     }
 }

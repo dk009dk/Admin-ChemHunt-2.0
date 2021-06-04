@@ -3,7 +3,6 @@
 namespace App\Orchid\Layouts\Chemhunt\Task;
 
 use Orchid\Screen\Field;
-use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Layouts\Rows;
 
@@ -17,7 +16,7 @@ class TaskEditLayout extends Rows
     public function fields(): array
     {
         return [
-            Select::make('task.day_'.config('chemhunt.day'))
+            Select::make('user.task.day_'.config('chemhunt.day'))
                 ->options([
                     'Done'   => 'Done',
                     'Pending' => 'Pending',

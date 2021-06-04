@@ -2,9 +2,13 @@
 
 namespace App\Orchid\Screens\Chemhunt\Answer;
 
+use App\Exports\Chemhunt\TodayAnswerExport;
 use App\Models\User;
 use App\Orchid\Layouts\Chemhunt\Answer\AnswerTodayListLayout;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
+use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Screen;
 
 class AnswerTodayListScreen extends Screen
@@ -50,6 +54,11 @@ class AnswerTodayListScreen extends Screen
     public function commandBar(): array
     {
         return [
+            Button::make('Export file')
+                ->method('export')
+                ->icon('cloud-download')
+                ->rawClick()
+                ->novalidate(),
         ];
     }
 
@@ -63,5 +72,11 @@ class AnswerTodayListScreen extends Screen
         return [
             AnswerTodayListLayout::class,
         ];
+    }
+
+    public function export(){
+        ob_end_clean();
+        ob_start();
+        return Excel::download(new TodayAnswerExport(), 'chemhunt-answers-day-'.config('chemhunt.day').'-'.Carbon::now().'.xlsx');
     }
 }

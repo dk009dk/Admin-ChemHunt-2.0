@@ -24,12 +24,6 @@ class RiddleEditLayout extends Rows
                 ->required()
                 ->rows(5),
 
-            Input::make('riddle.answer')
-                ->type('text')
-                ->required()
-                ->title(__('Answer'))
-                ->placeholder(__('Answer')),
-
             Select::make('riddle.sr_no')
                 ->title('Select')
                 ->options([

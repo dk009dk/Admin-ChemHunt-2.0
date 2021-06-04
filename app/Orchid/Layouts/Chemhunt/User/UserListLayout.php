@@ -3,13 +3,7 @@
 namespace App\Orchid\Layouts\Chemhunt\User;
 
 use App\Models\User;
-use App\Orchid\Presenters\Chemhunt\UserPresenter;
-use Orchid\Screen\Actions\Button;
-use Orchid\Screen\Actions\DropDown;
-use Orchid\Screen\Layouts\Persona;
-use Orchid\Screen\Actions\Link;
-use Orchid\Screen\Actions\ModalToggle;
-use Orchid\Screen\Layouts\Content;
+use Illuminate\Support\Carbon;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
 
@@ -81,6 +75,13 @@ class UserListLayout extends Table
             TD::make('phone_number_wapp', __('Wapp'))
                 ->sort()
                 ->filter(TD::FILTER_TEXT),
+
+            TD::make('created_at', __('Created At'))
+                ->sort()
+                ->filter(TD::FILTER_DATE)
+                ->render(function (User $user){
+                    return Carbon::parse();
+                }),
 
         ];
     }

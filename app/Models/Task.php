@@ -2,18 +2,13 @@
 
 namespace App\Models;
 
-use App\Orchid\Presenters\Chemhunt\UserPresenter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 use Orchid\Access\UserAccess;
 use Orchid\Filters\Filterable;
 use Orchid\Metrics\Chartable;
 use Orchid\Screen\AsSource;
-use Orchid\Support\Presenter;
 use Ramsey\Uuid\Uuid;
 
 class Task extends Model

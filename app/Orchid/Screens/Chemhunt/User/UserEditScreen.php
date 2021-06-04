@@ -11,14 +11,14 @@ class UserEditScreen extends Screen
      *
      * @var string
      */
-    public $name = 'UserEditScreen';
+    public $name = 'Edit User';
 
     /**
      * Display header description.
      *
      * @var string|null
      */
-    public $description = 'UserEditScreen';
+    public $description = 'Edit students details';
 
     /**
      * Query data.

@@ -13,7 +13,6 @@ use Orchid\Access\UserAccess;
 use Orchid\Filters\Filterable;
 use Orchid\Metrics\Chartable;
 use Orchid\Screen\AsSource;
-use Orchid\Support\Presenter;
 use Ramsey\Uuid\Uuid;
 
 class User extends Model
@@ -149,7 +148,7 @@ class User extends Model
             };
             do{
                 $id = mt_rand(100000000,999999999);
-                $email =['email'=>$id.'@chem.hunt'] ;
+                $email =['email'=>'cid'.$id.'@chemhunt2.0'] ;
                 $validator = Validator::make($email, ['email' => 'unique:users',]);
                 if ($validator->fails()) {
                     $unique = 0;
