@@ -4,6 +4,9 @@ namespace App\Orchid\Layouts\Chemhunt\User;
 
 use App\Models\User;
 use Illuminate\Support\Carbon;
+use Orchid\Screen\Actions\Button;
+use Orchid\Screen\Actions\DropDown;
+use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
 
@@ -49,7 +52,16 @@ class UserListLayout extends Table
             TD::make('email', __('ChemHunt Id'))
                 ->sort()
                 ->cantHide()
-                ->filter(TD::FILTER_TEXT),
+                ->filter(TD::FILTER_TEXT)
+                ->render(function (User $user) {
+                    return ModalToggle::make($user->email)
+                        ->modal('oneAsyncModal')
+                        ->modalTitle($user->email)
+                        ->method('saveUser')
+                        ->asyncParameters([
+                            'user' => $user->id,
+                        ]);
+                }),
 
             TD::make('user_password', __('Password'))
                 ->sort()
@@ -78,9 +90,23 @@ class UserListLayout extends Table
 
             TD::make('created_at', __('Created At'))
                 ->sort()
-                ->filter(TD::FILTER_DATE)
-                ->render(function (User $user){
-                    return Carbon::parse();
+                ->filter(TD::FILTER_DATE),
+
+            TD::make(__('Actions'))
+                ->align(TD::ALIGN_CENTER)
+                ->width('100px')
+                ->render(function (User $user) {
+                    return DropDown::make()
+                        ->icon('options-vertical')
+                        ->list([
+                            Button::make(__('Delete'))
+                                ->icon('trash')
+                                ->method('remove')
+                                ->confirm(__('Are you sure you want to delete this User?'))
+                                ->parameters([
+                                    'id' => $user->id,
+                                ]),
+                        ]);
                 }),
 
         ];

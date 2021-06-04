@@ -9,11 +9,8 @@ use App\View\Components\Chemhunt\RiddleQuestion;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\DropDown;
 use Orchid\Screen\Actions\Link;
-use Orchid\Screen\Actions\ModalToggle;
-use Orchid\Screen\Layouts\Content;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
-use Psy\Util\Str;
 
 class RiddleListLayout extends Table
 {

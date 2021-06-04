@@ -95,14 +95,10 @@ class UserListScreen extends Screen
 
     public function saveUser(User $user, Request $request): void
     {
-        $request->validate([
-            'user.email' => 'required|unique:admins,email,'.$user->id,
-        ]);
-
         $user->fill($request->input('user'))
             ->save();
 
-        Toast::info(__('Admin was saved.'));
+        Toast::info(__('User was saved.'));
     }
 
     public function remove(Request $request): void
@@ -110,6 +106,6 @@ class UserListScreen extends Screen
         User::findOrFail($request->get('id'))
             ->delete();
 
-        Toast::info(__('Admin was removed'));
+        Toast::info(__('User was removed'));
     }
 }
