@@ -3,7 +3,6 @@
 namespace App\Exports\Chemhunt;
 
 use App\Models\User;
-use Illuminate\Support\Carbon;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
@@ -19,7 +18,7 @@ class AnswerExport implements FromCollection, WithMapping, WithHeadings
     }
 
     public function map($user) : array {
-        $data = [
+        return [
             $user->id,
             $user->user_email,
             $user->email,
@@ -37,17 +36,17 @@ class AnswerExport implements FromCollection, WithMapping, WithHeadings
             $user->answer->day_3_q_2,
             $user->answer->day_3_q_3,
             $user->answer->day_3_q_4,
-             $user->answer->day_3_time,
+            $user->answer->day_3_time,
             $user->answer->day_4_q_1,
             $user->answer->day_4_q_2,
             $user->answer->day_4_q_3,
             $user->answer->day_4_q_4,
-              $user->answer->day_4_time,
+            $user->answer->day_4_time,
             $user->answer->day_5_q_1,
             $user->answer->day_5_q_2,
             $user->answer->day_5_q_3,
             $user->answer->day_5_q_4,
-              $user->answer->day_5_time,
+            $user->answer->day_5_time,
             $user->answer->day_6_q_1,
             $user->answer->day_6_q_2,
             $user->answer->day_6_q_3,
@@ -60,7 +59,6 @@ class AnswerExport implements FromCollection, WithMapping, WithHeadings
             $user->answer->day_7_time,
         ] ;
 
-        return $data;
     }
 
     public function headings() : array {
