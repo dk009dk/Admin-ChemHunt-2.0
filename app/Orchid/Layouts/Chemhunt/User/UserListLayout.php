@@ -90,7 +90,10 @@ class UserListLayout extends Table
 
             TD::make('created_at', __('Created At'))
                 ->sort()
-                ->filter(TD::FILTER_DATE),
+                ->filter(TD::FILTER_DATE)
+                ->render(function (User $user) {
+                    return $user->updated_at->toDateTimeString();
+                }),
 
             TD::make(__('Actions'))
                 ->align(TD::ALIGN_CENTER)
