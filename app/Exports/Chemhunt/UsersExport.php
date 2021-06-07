@@ -16,21 +16,7 @@ class UsersExport implements FromCollection,WithMapping,WithHeadings
     */
     public function collection()
     {
-        return User::all(
-            'id',
-            'first_name',
-            'middle_name',
-            'last_name',
-            'college',
-            'year',
-            'state',
-            'phone_number',
-            'phone_number_wapp',
-            'user_email',
-            'user_password',
-            'email',
-            'created_at'
-        );
+        return User::with('admin')->get();
     }
 
     public function map($user) : array {
@@ -39,14 +25,15 @@ class UsersExport implements FromCollection,WithMapping,WithHeadings
             $user->first_name,
             $user->middle_name,
             $user->last_name,
+            $user->admin->name,
+            $user->user_email,
+            $user->user_password,
+            $user->email,
             $user->college,
             $user->year,
             $user->state,
             $user->phone_number,
             $user->phone_number_wapp,
-            $user->user_email,
-            $user->user_password,
-            $user->email,
             $user->created_at->toDateTimeString(),
         ] ;
 
@@ -60,14 +47,15 @@ class UsersExport implements FromCollection,WithMapping,WithHeadings
             'First Name',
             'Middle Name',
             'Last Name',
+            'Coordinator',
+            'Email',
+            'Password',
+            'ChemHunt Id',
             'College',
             'Year',
             'State',
             'Phone',
             'Wapp',
-            'Email',
-            'Password',
-            'ChemHunt Id',
             'Created At',
         ];
     }

@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Orchid\Layouts\Chemhunt\Task;
+namespace App\Orchid\Layouts\Chemhunt\Task ;
 
-use App\Models\Task;
-use App\Models\User;
+use App\Models\User ;
+use Orchid\Screen\Actions\Button;
+use Orchid\Screen\Actions\DropDown;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
@@ -18,7 +19,7 @@ class TaskTodayListLayout extends Table
      *
      * @var string
      */
-    protected $target = 'tasks';
+    protected $target = 'users';
 
     /**
      * Get the table cells to be displayed.
@@ -30,34 +31,47 @@ class TaskTodayListLayout extends Table
         return [
             TD::make('name', __('Name'))
                 ->sort()
-            ->render(function (Task $task){
-                return $task->user->first_name.' '.$task->user->last_name;
+            ->render(function (User $user){
+                return $user->first_name.' '.$user->last_name;
             }),
 
-            TD::make('user.user_email', __('Email'))
+            TD::make('user_email', __('Email'))
                 ->sort()
                 ->filter(TD::FILTER_TEXT),
 
-            TD::make('user.email', __('ChemHunt Id'))
+            TD::make('email', __('ChemHunt Id'))
                 ->cantHide()
                 ->filter(TD::FILTER_TEXT)
-                ->render(function (Task $task) {
-                    return ModalToggle::make($task->user->email)
+                ->render(function (User $user) {
+                    return ModalToggle::make($user->email)
                         ->modal('oneAsyncModal')
-                        ->modalTitle('Day '.config('chemhunt.day').' '.$task->user->email)
+                        ->modalTitle('Day '.config('chemhunt.day').' '.$user->email)
                         ->method('saveTask')
                         ->asyncParameters([
-                            'task' => $task->id,
+                            'user' => $user->id,
                         ]);
                 }),
 
-            TD::make('day_'.config('chemhunt.day'), __('Day '.config('chemhunt.day').' Task'))
+            TD::make('task.day_'.config('chemhunt.day'), __('Day '.config('chemhunt.day').' User '))
                 ->cantHide()
                 ->filter(TD::FILTER_TEXT)
-                ->render(function (Task $task) {
-                    return $task->{'day_'.config('chemhunt.day')} === 'Pending'
+                ->render(function (User $user) {
+                    return $user->task->{'day_'.config('chemhunt.day')} === 'Pending'
                         ? '<i class="text-danger">●</i> Pending'
                         : '<i class="text-success">●</i> Done';
+                }),
+
+            TD::make(__('Actions'))
+                ->align(TD::ALIGN_CENTER)
+                ->width('100px')
+                ->render(function (User $user) {
+                    return Button::make(__(''))
+                                ->icon('trash')
+                                ->method('remove')
+                                ->confirm(__('Are you sure you want to delete this participant?'))
+                                ->parameters([
+                                    'id' => $user->id,
+                                ]);
                 }),
 
         ];

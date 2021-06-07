@@ -2,7 +2,7 @@
 
 namespace App\Orchid\Screens\Chemhunt\Task;
 
-use App\Models\Task;
+use App\Models\User;
 use App\Orchid\Layouts\Chemhunt\Task\TaskTodayEditLayout;
 use App\Orchid\Layouts\Chemhunt\Task\TaskTodayListLayout;
 use Illuminate\Http\Request;
@@ -38,10 +38,13 @@ class TasksTodayListSceen extends Screen
      */
     public function query(): array
     {
+        $this->name = 'Task Day '.config('chemhunt.day');
+
         $this->description = 'Task Day '.config('chemhunt.day').' Status';
         return [
-            'tasks' => Task::filters()
-                ->with('user')
+            'users' => User::filters()
+                ->where('admin_id',\Auth::user()->id)
+                ->with('task')
                 ->paginate(),
         ];
     }
@@ -66,31 +69,38 @@ class TasksTodayListSceen extends Screen
         return [
             TaskTodayListLayout::class,
             Layout::modal('oneAsyncModal', TaskTodayEditLayout::class)
-                ->async('asyncGetTask'),
+                ->async('asyncGetUser'),
         ];
     }
 
     /**
-     * @param Task $task
+     * @param User $user
      *
      * @return array
      */
-    public function asyncGetTask(Task $task): array
+    public function asyncGetUser(User $user): array
     {
         return [
-            'task' => $task,
+            'user' => $user,
         ];
     }
 
     /**
-     * @param Task $task
+     * @param User $user
      * @param Request $request
      */
-    public function saveTask(Task $task, Request $request): void
+    public function saveTask(User $user, Request $request): void
     {
-        $data=$request->input('task.day_'.config('chemhunt.day'));
-        $task->fill(['day_'.config('chemhunt.day')=>$data])->save();
-        //$user->save($task);
+        $data=$request->input('user.task.day_'.config('chemhunt.day'));
+        $user->task()->update(['day_'.config('chemhunt.day')=>$data]);
         Toast::info(__('Task status Updated.'));
+    }
+
+    public function remove(Request $request): void
+    {
+        User::findOrFail($request->get('id'))
+            ->delete();
+
+        Toast::info(__('Participant was removed'));
     }
 }

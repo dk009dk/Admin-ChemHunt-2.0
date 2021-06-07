@@ -3,7 +3,6 @@
 namespace App\Orchid\Layouts\Chemhunt\User;
 
 use App\Models\User;
-use Illuminate\Support\Carbon;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\DropDown;
 use Orchid\Screen\Actions\ModalToggle;
@@ -46,6 +45,10 @@ class UserListLayout extends Table
                 ->cantHide(),
 
             TD::make('user_email', __('Email'))
+                ->sort()
+                ->filter(TD::FILTER_TEXT),
+
+            TD::make('admin.name', __('Admin'))
                 ->sort()
                 ->filter(TD::FILTER_TEXT),
 

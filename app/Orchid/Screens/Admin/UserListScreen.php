@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Orchid\Screens\Admin;
 
+use App\Models\Admin;
 use App\Orchid\Layouts\Admin\UserEditLayout;
 use App\Orchid\Layouts\Admin\UserFiltersLayout;
 use App\Orchid\Layouts\Admin\UserListLayout;
@@ -43,10 +44,9 @@ class UserListScreen extends Screen
     public function query(): array
     {
         return [
-            'users' => User::with('roles')
+            'users' => User::with('roles')->withCount('participants')
                 ->filters()
                 ->filtersApplySelection(UserFiltersLayout::class)
-                ->defaultSort('id', 'desc')
                 ->paginate(),
         ];
     }

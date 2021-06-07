@@ -9,6 +9,7 @@ use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\DropDown;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Actions\ModalToggle;
+use Orchid\Screen\Layouts\Content;
 use Orchid\Screen\Layouts\Persona;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
@@ -47,6 +48,11 @@ class UserListLayout extends Table
                             'user' => $user->id,
                         ]);
                 }),
+
+            TD::make('participants_count', __('Participants'))
+                ->sort()
+                ->cantHide()
+                ->filter(TD::FILTER_NUMERIC),
 
             TD::make('updated_at', __('Last edit'))
                 ->sort()

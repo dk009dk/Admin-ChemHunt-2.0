@@ -38,7 +38,7 @@ class UserListScreen extends Screen
     public function query(): array
     {
         return [
-            'users' => User::filters()
+            'users' => User::with('admin')->filters()
                 ->defaultSort('first_name')
                 ->paginate(),
         ];
@@ -72,6 +72,7 @@ class UserListScreen extends Screen
 
             Layout::modal('oneAsyncModal', UserEditLayout::class)
                 ->async('asyncGetUser'),
+
         ];
     }
 
@@ -95,7 +96,7 @@ class UserListScreen extends Screen
 
     public function saveUser(User $user, Request $request): void
     {
-        $user->fill($request->input('user'))
+        $user->admin()->associate($request->input('user'))
             ->save();
 
         Toast::info(__('User was saved.'));

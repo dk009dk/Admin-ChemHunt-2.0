@@ -148,7 +148,7 @@ class User extends Model
             };
             do{
                 $id = mt_rand(100000000,999999999);
-                $email =['email'=>'cid'.$id.'@chemhunt2.0'] ;
+                $email =['email'=>$id.'@chemhunt2.0'] ;
                 $validator = Validator::make($email, ['email' => 'unique:users',]);
                 if ($validator->fails()) {
                     $unique = 0;
@@ -186,12 +186,14 @@ class User extends Model
         return $this->hasOne(Answer::class,'user_id');
     }
 
-    public function result(){
-        return $this->hasOne(Result::class,'user_id');
-    }
-
     public function task()
     {
         return $this->hasOne(Task::class,'user_id');
     }
+
+    public function admin(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Admin::class,'admin_id','id')->select('id','name');
+    }
+
 }

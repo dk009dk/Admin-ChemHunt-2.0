@@ -168,4 +168,9 @@ class User extends Authenticatable implements UserInterface
     {
         return 'string';
     }
+
+    public function participants(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(\App\Models\User::class,'admin_id','id');
+    }
 }

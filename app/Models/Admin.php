@@ -170,5 +170,10 @@ class Admin extends Authenticatable implements UserInterface
     {
         return 'string';
     }
+
+    public function participants(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(User::class);
+    }
 }
 
