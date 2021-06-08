@@ -54,7 +54,7 @@ class AnswerTodayListLayout extends Table
                 ->cantHide()
                 ->filter(TD::FILTER_TEXT),
 
-            TD::make('result.day_'.config('chemhunt.day').'_r_1', __('Answer 1'))
+            TD::make('result.day_'.config('chemhunt.day').'_r_1', __('Result 1'))
                 ->cantHide()
                 ->filter(TD::FILTER_TEXT),
 
@@ -62,7 +62,7 @@ class AnswerTodayListLayout extends Table
                 ->cantHide()
                 ->filter(TD::FILTER_TEXT),
 
-            TD::make('result.day_'.config('chemhunt.day').'_r_2', __('Answer 2'))
+            TD::make('result.day_'.config('chemhunt.day').'_r_2', __('Result 2'))
                 ->cantHide()
                 ->filter(TD::FILTER_TEXT),
 
@@ -70,15 +70,15 @@ class AnswerTodayListLayout extends Table
                 ->cantHide()
                 ->filter(TD::FILTER_TEXT),
 
-            TD::make('result.day_'.config('chemhunt.day').'_r_3', __('Answer 3'))
+            TD::make('result.day_'.config('chemhunt.day').'_r_3', __('Result 3'))
                 ->cantHide()
                 ->filter(TD::FILTER_TEXT),
 
-            TD::make('answer.day_'.config('chemhunt.day').'_q_4', __('Final'))
+            TD::make('answer.day_'.config('chemhunt.day').'_q_4', __('Answer 4'))
                 ->cantHide()
                 ->filter(TD::FILTER_TEXT),
 
-            TD::make('result.day_'.config('chemhunt.day').'_r_4', __('Final'))
+            TD::make('result.day_'.config('chemhunt.day').'_r_4', __('Result 4'))
                 ->cantHide()
                 ->filter(TD::FILTER_TEXT),
 
