@@ -57,7 +57,6 @@ class PlatformScreen extends Screen
     public function layout(): array
     {
         return [
-
         ];
     }
 }

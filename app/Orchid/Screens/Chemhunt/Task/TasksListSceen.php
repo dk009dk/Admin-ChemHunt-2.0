@@ -3,7 +3,6 @@
 namespace App\Orchid\Screens\Chemhunt\Task;
 
 use App\Exports\Chemhunt\TasksExport;
-use App\Models\Task;
 use App\Models\User;
 use App\Orchid\Layouts\Chemhunt\Task\TaskEditLayout;
 use App\Orchid\Layouts\Chemhunt\Task\TaskListLayout;
@@ -76,8 +75,6 @@ class TasksListSceen extends Screen
     {
         return [
             TaskListLayout::class,
-            Layout::modal('oneAsyncModal', TaskEditLayout::class)
-                ->async('asyncGetTask'),
         ];
     }
 

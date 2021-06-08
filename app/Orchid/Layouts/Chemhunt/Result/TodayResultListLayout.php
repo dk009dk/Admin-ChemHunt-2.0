@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Orchid\Layouts\Chemhunt\Answer;
+namespace App\Orchid\Layouts\Chemhunt\Result;
 
 use App\Models\User;
-use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
 
-class AnswerTodayListLayout extends Table
+class TodayResultListLayout extends Table
 {
     /**
      * Data source.
@@ -39,26 +38,9 @@ class AnswerTodayListLayout extends Table
 
             TD::make('email', __('ChemHunt Id'))
                 ->cantHide()
-                ->filter(TD::FILTER_TEXT)
-                ->render(function (User $user) {
-                    return ModalToggle::make($user->email)
-                        ->modal('oneAsyncModal')
-                        ->modalTitle('Day '.config('chemhunt.day').' '.$user->email)
-                        ->method('saveResult')
-                        ->asyncParameters([
-                            'user' => $user->id,
-                        ]);
-                }),
-
-            TD::make('answer.day_'.config('chemhunt.day').'_q_1', __('Answer 1'))
-                ->cantHide()
                 ->filter(TD::FILTER_TEXT),
 
             TD::make('result.day_'.config('chemhunt.day').'_r_1', __('Answer 1'))
-                ->cantHide()
-                ->filter(TD::FILTER_TEXT),
-
-            TD::make('answer.day_'.config('chemhunt.day').'_q_2', __('Answer 2'))
                 ->cantHide()
                 ->filter(TD::FILTER_TEXT),
 
@@ -66,15 +48,7 @@ class AnswerTodayListLayout extends Table
                 ->cantHide()
                 ->filter(TD::FILTER_TEXT),
 
-            TD::make('answer.day_'.config('chemhunt.day').'_q_3', __('Answer 3'))
-                ->cantHide()
-                ->filter(TD::FILTER_TEXT),
-
             TD::make('result.day_'.config('chemhunt.day').'_r_3', __('Answer 3'))
-                ->cantHide()
-                ->filter(TD::FILTER_TEXT),
-
-            TD::make('answer.day_'.config('chemhunt.day').'_q_4', __('Final'))
                 ->cantHide()
                 ->filter(TD::FILTER_TEXT),
 
@@ -82,9 +56,6 @@ class AnswerTodayListLayout extends Table
                 ->cantHide()
                 ->filter(TD::FILTER_TEXT),
 
-            TD::make('answer.day_'.config('chemhunt.day').'_time', __('Time'))
-                ->cantHide()
-                ->filter(TD::FILTER_DATE),
         ];
     }
 }

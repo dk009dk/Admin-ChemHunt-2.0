@@ -2,12 +2,10 @@
 
 namespace App\Orchid;
 
-use App\Models\User;
 use Orchid\Platform\Dashboard;
 use Orchid\Platform\ItemPermission;
 use Orchid\Platform\OrchidServiceProvider;
 use Orchid\Screen\Actions\Menu;
-use Orchid\Support\Color;
 
 class PlatformProvider extends OrchidServiceProvider
 {
@@ -63,14 +61,29 @@ class PlatformProvider extends OrchidServiceProvider
 
             Menu::make(__('Today Answers'))
                 ->icon('bag')
-                ->route('platform.chemhunt.answers.today')
-                ->permission('platform.chemhunt.answers.today.show'),
+                ->route('platform.chemhunt.answers.today.all')
+                ->permission('platform.chemhunt.answers.show'),
+
+            Menu::make(__('Results'))
+                ->icon('anchor')
+                ->route('platform.chemhunt.results')
+                ->permission('platform.chemhunt.results.show'),
+
+            Menu::make(__('Results Today'))
+                ->icon('anchor')
+                ->route('platform.chemhunt.results.today.all')
+                ->permission('platform.chemhunt.results.show'),
 
             Menu::make(__('Today Task'))
                 ->icon('key')
                 ->route('platform.chemhunt.tasks.today')
                 ->permission('platform.chemhunt.tasks.today.show')
                 ->title(__('ChemHunt Today Task')),
+
+            Menu::make(__('Today Answers'))
+                ->icon('bag')
+                ->route('platform.chemhunt.answers.today')
+                ->permission('platform.chemhunt.answers.today.show'),
 
         ];
     }
@@ -104,7 +117,8 @@ class PlatformProvider extends OrchidServiceProvider
                 ->addPermission('platform.chemhunt.tasks.show', __('Tasks Show'))
                 ->addPermission('platform.chemhunt.tasks.today.show', __('Tasks Today'))
                 ->addPermission('platform.chemhunt.answers.show', __('Answers'))
-                ->addPermission('platform.chemhunt.answers.today.show', __('Answers Today')),
+                ->addPermission('platform.chemhunt.answers.today.show', __('Answers Today'))
+                ->addPermission('platform.chemhunt.results.show', __('Results'))
             ];
     }
 

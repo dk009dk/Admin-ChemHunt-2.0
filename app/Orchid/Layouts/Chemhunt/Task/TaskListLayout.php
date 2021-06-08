@@ -39,16 +39,7 @@ class TaskListLayout extends Table
 
             TD::make('email', __('ChemHunt Id'))
                 ->cantHide()
-                ->filter(TD::FILTER_TEXT)
-                ->render(function (User $user) {
-                    return ModalToggle::make($user->email)
-                        ->modal('oneAsyncModal')
-                        ->modalTitle('Task '.$user->email)
-                        ->method('saveTask')
-                        ->asyncParameters([
-                            'user' => $user->id,
-                        ]);
-                }),
+                ->filter(TD::FILTER_TEXT),
 
             TD::make('task.day_1', __('Task 1'))
                 ->cantHide()

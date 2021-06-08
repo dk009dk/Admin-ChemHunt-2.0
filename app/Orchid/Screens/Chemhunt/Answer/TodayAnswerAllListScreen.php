@@ -4,24 +4,20 @@ namespace App\Orchid\Screens\Chemhunt\Answer;
 
 use App\Exports\Chemhunt\TodayAnswerExport;
 use App\Models\User;
-use App\Orchid\Layouts\Chemhunt\Answer\AnswerTodayListLayout;
-use App\Orchid\Layouts\Chemhunt\Answer\ResultEditLayout;
-use Illuminate\Http\Request;
+use App\Orchid\Layouts\Chemhunt\Answer\TodayAnswerAllListLayout;
 use Illuminate\Support\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Screen;
-use Orchid\Support\Facades\Layout;
-use Orchid\Support\Facades\Toast;
 
-class AnswerTodayListScreen extends Screen
+class TodayAnswerAllListScreen extends Screen
 {
     /**
      * Display header name.
      *
      * @var string
      */
-    public $name = 'Today Answers';
+    public $name = 'Today All Answers';
 
     /**
      * Display header description.
@@ -45,8 +41,6 @@ class AnswerTodayListScreen extends Screen
         $this->description = 'Day '.config('chemhunt.day').' ChemHunt answers list';
         return [
             'users'=>User::filters()
-                ->where('admin_id',\Auth::user()->id)
-                ->with('result')
                 ->with('answer')
                 ->select('id','first_name','last_name','user_email','email')
                 ->paginate(),
@@ -77,38 +71,10 @@ class AnswerTodayListScreen extends Screen
     public function layout(): array
     {
         return [
-            AnswerTodayListLayout::class,
-            Layout::modal('oneAsyncModal', ResultEditLayout::class)
-                ->async('asyncGetUser'),
+            TodayAnswerAllListLayout::class,
         ];
     }
 
-    /**
-     * @param User $user
-     *
-     * @return array
-     */
-    public function asyncGetUser(User $user): array
-    {
-        return [
-            'user' => $user,
-        ];
-    }
-
-    /**
-     * @param User $user
-     * @param Request $request
-     */
-    public function saveResult(User $user, Request $request): void
-    {
-        $user->result()->update([
-            'day_'.config('chemhunt.day').'_r_1'=>$request->input('user.result.day_'.config('chemhunt.day').'_r_1'),
-            'day_'.config('chemhunt.day').'_r_2'=>$request->input('user.result.day_'.config('chemhunt.day').'_r_2'),
-            'day_'.config('chemhunt.day').'_r_3'=>$request->input('user.result.day_'.config('chemhunt.day').'_r_3'),
-            'day_'.config('chemhunt.day').'_r_4'=>$request->input('user.result.day_'.config('chemhunt.day').'_r_4'),
-        ]);
-        Toast::info(__('Result Updated.'));
-    }
 
     public function export(){
         ob_end_clean();

@@ -129,7 +129,16 @@ Route::screen('tasks',\App\Orchid\Screens\Chemhunt\Task\TasksListSceen::class )
             ->push(__('Tasks'), route('platform.chemhunt.tasks'));
     });
 
-//Chemhunt > Users > Answers
+//Chemhunt > Users > Answers Today All
+Route::screen('answers/today/all',\App\Orchid\Screens\Chemhunt\Answer\TodayAnswerAllListScreen::class )
+    ->name('platform.chemhunt.answers.today.all')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push(__('Today Answers'), route('platform.chemhunt.answers.today.all'));
+    });
+
+//Chemhunt > Users > Answers Today
 Route::screen('answers/today',\App\Orchid\Screens\Chemhunt\Answer\AnswerTodayListScreen::class )
     ->name('platform.chemhunt.answers.today')
     ->breadcrumbs(function (Trail $trail) {
@@ -147,4 +156,22 @@ Route::screen('answers',\App\Orchid\Screens\Chemhunt\Answer\AnswerListScreen::cl
             ->push(__('Answers'), route('platform.chemhunt.answers'));
     });
 
-//Route::screen('idea', 'Idea::class','platform.screens.idea');
+//Chemhunt > Users > Result Today All
+Route::screen('results/today/all',\App\Orchid\Screens\Chemhunt\Result\TodayResultListScreen::class )
+    ->name('platform.chemhunt.results.today.all')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push(__('Results'), route('platform.chemhunt.results.today.all'));
+    });
+
+//Chemhunt > Users > Result
+Route::screen('results',\App\Orchid\Screens\Chemhunt\Result\ResultListScreen::class )
+    ->name('platform.chemhunt.results')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push(__('Results'), route('platform.chemhunt.results'));
+    });
+
+

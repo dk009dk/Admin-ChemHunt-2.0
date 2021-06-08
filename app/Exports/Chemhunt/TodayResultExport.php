@@ -7,29 +7,27 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 
-class TodayAnswerExport implements FromCollection, WithMapping, WithHeadings
+class TodayResultExport implements FromCollection, WithMapping, WithHeadings
 {
     /**
      * @return \Illuminate\Support\Collection
      */
     public function collection()
     {
-        return User::with('answer')->get(['id','user_email','email']);
+        return User::with('result')->get(['id','user_email','email']);
     }
 
     public function map($user) : array {
-        $data = [
+        return [
             $user->id,
             $user->user_email,
             $user->email,
-            $user->answer->{'day_'.config('chemhunt.day').'_q_1'},
-            $user->answer->{'day_'.config('chemhunt.day').'_q_2'},
-            $user->answer->{'day_'.config('chemhunt.day').'_q_3'},
-            $user->answer->{'day_'.config('chemhunt.day').'_q_4'},
-            $user->answer->{'day_'.config('chemhunt.day').'_time'},
+            $user->result->{'day_'.config('chemhunt.day').'_r_1'},
+            $user->result->{'day_'.config('chemhunt.day').'_r_2'},
+            $user->result->{'day_'.config('chemhunt.day').'_r_3'},
+            $user->result->{'day_'.config('chemhunt.day').'_r_4'},
         ] ;
 
-        return $data;
     }
 
     public function headings() : array {
@@ -41,7 +39,7 @@ class TodayAnswerExport implements FromCollection, WithMapping, WithHeadings
             'Day '.config('chemhunt.day').' Answer 2',
             'Day '.config('chemhunt.day').' Answer 3',
             'Day '.config('chemhunt.day').' Answer 4',
-            'Time',
         ] ;
     }
 }
+
