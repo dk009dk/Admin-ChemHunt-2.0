@@ -6,7 +6,6 @@ use Orchid\Screen\Field;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Layouts\Rows;
-use Orchid\Screen\TD;
 
 class ResultEditLayout extends Rows
 {
@@ -26,44 +25,28 @@ class ResultEditLayout extends Rows
             Select::make('user.result.day_'.config('chemhunt.day').'_r_1')
                 ->options([
                     '0'=>'0',
-                    '1'=>'1',
-                    '2'=>'2',
-                    '3'=>'3',
-                    '4'=>'4',
-                    '5'=>'5'
+                    '10'=>'10',
                 ])
                 ->title('Answer 1'),
 
             Select::make('user.result.day_'.config('chemhunt.day').'_r_2')
                 ->options([
                     '0'=>'0',
-                    '1'=>'1',
-                    '2'=>'2',
-                    '3'=>'3',
-                    '4'=>'4',
-                    '5'=>'5'
+                    '15'=>'15',
                 ])
                 ->title('Answer 2'),
 
             Select::make('user.result.day_'.config('chemhunt.day').'_r_3')
                 ->options([
                     '0'=>'0',
-                    '1'=>'1',
-                    '2'=>'2',
-                    '3'=>'3',
-                    '4'=>'4',
-                    '5'=>'5'
+                    '25'=>'25',
                 ])
                 ->title('Answer 3'),
 
             Select::make('user.result.day_'.config('chemhunt.day').'_r_4')
                 ->options([
                     '0'=>'0',
-                    '1'=>'1',
-                    '2'=>'2',
-                    '3'=>'3',
-                    '4'=>'4',
-                    '5'=>'5'
+                    '50'=>'50'
                 ])
                 ->title('Final Answer'),
         ];
