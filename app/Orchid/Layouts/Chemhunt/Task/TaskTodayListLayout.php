@@ -52,7 +52,7 @@ class TaskTodayListLayout extends Table
                         ]);
                 }),
 
-            TD::make('task.day_'.config('chemhunt.day'), __('Day '.config('chemhunt.day').' User '))
+            TD::make('task.day_'.config('chemhunt.day'), __('Day '.config('chemhunt.day').''))
                 ->cantHide()
                 ->filter(TD::FILTER_TEXT)
                 ->render(function (User $user) {

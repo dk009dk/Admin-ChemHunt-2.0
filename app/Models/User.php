@@ -103,6 +103,8 @@ class User extends Model
         'user_email',
         'email',
         'user_password',
+        'created_at',
+        'updated_at',
     ];
 
     /**
@@ -122,6 +124,8 @@ class User extends Model
         'user_email',
         'email',
         'user_password',
+        'created_at',
+        'updated_at',
     ];
 
     /**
