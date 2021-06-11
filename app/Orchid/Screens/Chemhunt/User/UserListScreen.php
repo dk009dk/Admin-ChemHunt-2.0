@@ -3,7 +3,7 @@
 namespace App\Orchid\Screens\Chemhunt\User;
 
 use App\Exports\Chemhunt\UsersExport;
-use App\Orchid\Layouts\Chemhunt\User\UserEditLayout;
+use App\Orchid\Layouts\Chemhunt\User\UserEditAdminLayout;
 use App\Orchid\Layouts\Chemhunt\User\UserListLayout;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -70,7 +70,7 @@ class UserListScreen extends Screen
         return [
             UserListLayout::class,
 
-            Layout::modal('oneAsyncModal', UserEditLayout::class)
+            Layout::modal('oneAsyncModal', UserEditAdminLayout::class)
                 ->async('asyncGetUser'),
 
         ];

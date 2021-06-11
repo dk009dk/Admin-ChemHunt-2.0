@@ -73,12 +73,7 @@ Route::screen('roles', App\Orchid\Screens\Role\RoleListScreen::class)
 
 //Chemhunt > Users > Edit
 Route::screen('users/{user}/edit', App\Orchid\Screens\Chemhunt\User\UserEditScreen::class)
-    ->name('platform.chemhunt.users.edit')
-    ->breadcrumbs(function (Trail $trail) {
-        return $trail
-            ->parent('platform.index')
-            ->push(__('Admins'), route('platform.chemhunt.users.edit'));
-    });
+    ->name('platform.chemhunt.users.edit');
 
 //Chemhunt > Users > List
 Route::screen('users', App\Orchid\Screens\Chemhunt\User\UserListScreen::class)

@@ -5,6 +5,7 @@ namespace App\Orchid\Layouts\Chemhunt\User;
 use App\Models\User;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\DropDown;
+use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
@@ -105,6 +106,11 @@ class UserListLayout extends Table
                     return DropDown::make()
                         ->icon('options-vertical')
                         ->list([
+
+                            Link::make(__('Edit'))
+                                ->route('platform.chemhunt.users.edit', $user->id)
+                                ->icon('pencil'),
+
                             Button::make(__('Delete'))
                                 ->icon('trash')
                                 ->method('remove')
