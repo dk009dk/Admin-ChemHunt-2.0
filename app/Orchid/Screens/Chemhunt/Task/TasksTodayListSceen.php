@@ -45,7 +45,7 @@ class TasksTodayListSceen extends Screen
             'users' => User::filters()
                 ->where('admin_id',\Auth::user()->id)
                 ->with('task')
-                ->paginate('20'),
+                ->paginate('30'),
         ];
     }
 

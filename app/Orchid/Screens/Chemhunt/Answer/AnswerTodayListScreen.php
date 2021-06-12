@@ -49,7 +49,7 @@ class AnswerTodayListScreen extends Screen
                 ->with('result')
                 ->with('answer')
                 ->select('id','first_name','last_name','user_email','email')
-                ->paginate('20'),
+                ->paginate('30'),
         ];
     }
 

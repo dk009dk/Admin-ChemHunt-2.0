@@ -19,7 +19,3 @@ use Maatwebsite\Excel\Facades\Excel;
 
 Route::redirect('/home','/main');
 
-Route::get('/test',function (){
-    $users=User::with('task')->get(['id','user_email','email']);
-    dd($users);
-});
