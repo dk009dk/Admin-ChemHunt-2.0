@@ -61,11 +61,7 @@ class AnswerTodayListScreen extends Screen
     public function commandBar(): array
     {
         return [
-            Button::make('Export file')
-                ->method('export')
-                ->icon('cloud-download')
-                ->rawClick()
-                ->novalidate(),
+
         ];
     }
 
@@ -110,9 +106,4 @@ class AnswerTodayListScreen extends Screen
         Toast::info(__('Result Updated.'));
     }
 
-    public function export(){
-        ob_end_clean();
-        ob_start();
-        return Excel::download(new TodayAnswerExport(), 'chemhunt-answers-day-'.config('chemhunt.day').'-'.Carbon::now().'.xlsx');
-    }
 }
