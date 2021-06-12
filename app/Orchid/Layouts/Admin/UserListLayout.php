@@ -49,6 +49,11 @@ class UserListLayout extends Table
                         ]);
                 }),
 
+            TD::make('ig', __('IG'))
+                ->sort()
+                ->cantHide()
+                ->filter(TD::FILTER_TEXT),
+
             TD::make('participants_count', __('Participants'))
                 ->sort()
                 ->cantHide()

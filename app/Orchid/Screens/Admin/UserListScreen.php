@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Orchid\Screens\Admin;
 
-use App\Models\Admin;
 use App\Orchid\Layouts\Admin\UserEditLayout;
 use App\Orchid\Layouts\Admin\UserFiltersLayout;
 use App\Orchid\Layouts\Admin\UserListLayout;

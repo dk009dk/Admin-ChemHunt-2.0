@@ -58,6 +58,7 @@ class Admin extends Authenticatable implements UserInterface
     protected $fillable = [
         'name',
         'email',
+        'ig',
         'password',
         'permissions',
     ];
@@ -92,6 +93,7 @@ class Admin extends Authenticatable implements UserInterface
         'id',
         'name',
         'email',
+        'ig',
         'permissions',
     ];
 
@@ -104,6 +106,7 @@ class Admin extends Authenticatable implements UserInterface
         'id',
         'name',
         'email',
+        'ig',
         'updated_at',
         'created_at',
     ];

@@ -202,7 +202,7 @@ class User extends Model
 
     public function admin(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Admin::class,'admin_id','id')->select('id','name');
+        return $this->belongsTo(Admin::class,'admin_id','id')->select('id','name','ig');
     }
 
 }

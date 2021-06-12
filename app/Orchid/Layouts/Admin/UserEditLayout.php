@@ -30,6 +30,11 @@ class UserEditLayout extends Rows
                 ->required()
                 ->title(__('Email'))
                 ->placeholder(__('Email')),
+
+            Input::make('user.ig')
+                ->type('text')
+                ->title(__('Instagram ID'))
+                ->placeholder(__('Instagram ID')),
         ];
     }
 }

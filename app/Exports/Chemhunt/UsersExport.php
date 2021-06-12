@@ -9,7 +9,8 @@ use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 
-class UsersExport implements FromCollection,WithMapping,WithHeadings
+class
+UsersExport implements FromCollection,WithMapping,WithHeadings
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -26,6 +27,7 @@ class UsersExport implements FromCollection,WithMapping,WithHeadings
             $user->middle_name,
             $user->last_name,
             $user->admin->name,
+            $user->admin->ig,
             $user->user_email,
             $user->user_password,
             $user->email,
@@ -48,6 +50,7 @@ class UsersExport implements FromCollection,WithMapping,WithHeadings
             'Middle Name',
             'Last Name',
             'Coordinator',
+            'Coordinator IG',
             'Email',
             'Password',
             'ChemHunt Id',

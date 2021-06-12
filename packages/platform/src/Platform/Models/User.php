@@ -57,6 +57,7 @@ class User extends Authenticatable implements UserInterface
     protected $fillable = [
         'name',
         'email',
+        'ig',
         'password',
         'permissions',
     ];
