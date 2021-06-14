@@ -14,12 +14,15 @@ class ResultExport implements FromCollection, WithMapping, WithHeadings
      */
     public function collection()
     {
-        return User::with('result')->get(['id','user_email','email']);
+        return User::with('result','admin')->get();
     }
 
     public function map($user) : array {
         return [
             $user->id,
+            $user->first_name,
+            $user->last_name,
+            $user->admin->name,
             $user->user_email,
             $user->email,
             $user->result->day_1_r_1,
@@ -57,6 +60,9 @@ class ResultExport implements FromCollection, WithMapping, WithHeadings
     public function headings() : array {
         return [
             'id',
+            'First Name',
+            'Last Name',
+            'Coordinator',
             'Email',
             'ChemHunt Id',
             'Day 1 Answer 1',

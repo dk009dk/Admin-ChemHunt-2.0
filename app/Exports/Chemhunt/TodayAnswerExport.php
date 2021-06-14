@@ -14,12 +14,15 @@ class TodayAnswerExport implements FromCollection, WithMapping, WithHeadings
      */
     public function collection()
     {
-        return User::with('answer')->get(['id','user_email','email']);
+        return User::with('answer','admin')->get();
     }
 
     public function map($user) : array {
         $data = [
             $user->id,
+            $user->first_name,
+            $user->last_name,
+            $user->admin->name,
             $user->user_email,
             $user->email,
             $user->answer->{'day_'.config('chemhunt.day').'_q_1'},
@@ -35,6 +38,9 @@ class TodayAnswerExport implements FromCollection, WithMapping, WithHeadings
     public function headings() : array {
         return [
             'id',
+            'First Name',
+            'Last Name',
+            'Coordinator',
             'Email',
             'ChemHunt Id',
             'Day '.config('chemhunt.day').' Answer 1',

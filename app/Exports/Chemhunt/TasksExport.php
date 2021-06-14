@@ -16,11 +16,15 @@ class TasksExport implements FromCollection, WithMapping, WithHeadings
     */
     public function collection()
     {
-        return User::with('task')->get(['id','user_email','email']);
+        return User::with('admin','task')->get();
     }
+
     public function map($user) : array {
         return [
             $user->id,
+            $user->first_name,
+            $user->last_name,
+            $user->admin->name,
             $user->user_email,
             $user->email,
             $user->task->day_1,
@@ -45,6 +49,9 @@ class TasksExport implements FromCollection, WithMapping, WithHeadings
     public function headings() : array {
         return [
             'id',
+            'First Name',
+            'Last Name',
+            'Coordinator',
             'Email',
             'ChemHunt Id',
             'Task 1',
