@@ -134,7 +134,7 @@ class TaskListLayout extends Table
                 ->cantHide()
                 ->filter(TD::FILTER_TEXT)
                 ->render(function (User $user) {
-                return $user->task->day_5 === 'Pending'
+                return $user->task->day_6 === 'Pending'
                     ? '<i class="text-danger">●</i> Pending'
                     : '<i class="text-success">●</i> Done';
                 }),
